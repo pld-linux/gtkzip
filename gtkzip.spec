@@ -26,7 +26,7 @@ Linux. This program is based on a command line program ziptool, and is
 written fully in C using the GTK+ widget set.
 
 %description -l pl
-GtkZip jest programem do zarz±dzania napêdami Iomega Zip pod Linuxem.
+GtkZip jest programem do zarz±dzania napêdami Iomega Zip pod Linuksem.
 Program ten jest oparty na programie ziptool, zosta³ napisany w
 ca³o¶ci w C, z wykorzystaniem biblioteki GTK+.
 
