@@ -10,9 +10,7 @@ Source: 	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.
 Icon:		gtkzip.xpm
 Patch:		gtkzip-config.patch
 URL: 		http://home.netvigator.com/~sallymak/gtkzip/
-BuildRequires:	XFree86-devel
 BuildRequires:	gtk+-devel >= 1.0.6
-BuildRequires:	glib-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
 BuildRequires:	libgtop-devel >= 1.0.0
 BuildRequires:	gdbm-devel
