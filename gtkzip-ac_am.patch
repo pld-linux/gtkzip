@@ -27,9 +27,9 @@ diff -uNr gtkzip-0.5.1/src/Makefile.am gtkzip-0.5.1.new/src/Makefile.am
  INCLUDES = $(GTKZIP_INCLUDES) 
  
 diff -uNr gtkzip-0.5.1.orig/configure.in gtkzip-0.5.1/configure.in
---- gtkzip-0.5.1.orig/configure.in	Sun Aug 11 22:28:58 2002
-+++ gtkzip-0.5.1/configure.in	Sun Aug 11 23:07:08 2002
-@@ -77,16 +77,19 @@
+--- gtkzip-0.5.1.orig/configure.in	Sun Aug 11 23:29:17 2002
++++ gtkzip-0.5.1/configure.in	Sun Aug 11 23:26:50 2002
+@@ -77,16 +77,23 @@
     AC_MSG_ERROR($PTHREADS_NOT_FOUND)
  fi
  
@@ -38,20 +38,35 @@ diff -uNr gtkzip-0.5.1.orig/configure.in gtkzip-0.5.1/configure.in
 -  AC_MSG_WARN($LIBGTOP_NOT_FOUND)
 -fi
 +AC_PATH_PROG(LIBGTOP_CONFIG, libgtop-config, no)
-+
 +LIBGTOP_CFLAGS=`$LIBGTOP_CONFIG --cflags`
 +LIBGTOP_LIBS=`$LIBGTOP_CONFIG --libs`
-+
 +AC_SUBST(LIBGTOP_CFLAGS)
 +AC_SUBST(LIBGTOP_LIBS)
++
++AC_PATH_PROG(GDK_CONFIG, imlib-config, no)
++GDK_IMLIB_CFLAGS=`$GDK_CONFIG --cflags-gdk`
++GDK_IMLIB_LIBS=`$GDK_CONFIG --libs-gdk`
++AC_SUBST(GDK_IMLIB_CFLAGS)
++AC_SUBST(GDK_IMLIB_LIBS)
  
  GTKZIP_BIN=${prefix}/bin
  AC_SUBST(GTKZIP_BIN)
  
 -GTKZIP_INCLUDES="$GTK_CFLAGS $IMLIB_CFLAGS"
 -GTKZIP_LDADD="$GTK_LIBS $IMLIB_LIBS"
-+GTKZIP_INCLUDES="$GTK_CFLAGS $IMLIB_CFLAGS $LIBGTOP_CFLAGS"
-+GTKZIP_LDADD="$GTK_LIBS $IMLIB_LIBS $LIBGTOP_LIBS"
++GTKZIP_INCLUDES="$GTK_CFLAGS $IMLIB_CFLAGS $LIBGTOP_CFLAGS $GDK_IMLIB_CFLAGS"
++GTKZIP_LDADD="$GTK_LIBS $IMLIB_LIBS $LIBGTOP_LIBS $GDK_IMLIB_LIBS"
  
  AC_SUBST(GTKZIP_LDADD)
  AC_SUBST(GTKZIP_INCLUDES)
+diff -uNr gtkzip-0.5.1.orig/configure.in gtkzip-0.5.1/configure.in
+--- gtkzip-0.5.1.orig/configure.in	Sun Aug 11 23:35:56 2002
++++ gtkzip-0.5.1/configure.in	Sun Aug 11 23:36:24 2002
+@@ -14,7 +14,6 @@
+ AC_ISC_POSIX
+ AC_PROG_CC
+ AC_PROG_MAKE_SET
+-AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+ AC_PROG_GCC_TRADITIONAL
