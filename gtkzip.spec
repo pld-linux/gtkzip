@@ -13,13 +13,12 @@ Patch1:		%{name}-ac_am.patch
 URL:		http://smallpig.net/gtkzip/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gdbm-devel
 BuildRequires:	gtk+-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
 BuildRequires:	libgtop-devel >= 1.0.0
 BuildRequires:	libtool
-BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 GtkZip is a program for maintaining your Iomega Zip drive disks under
@@ -48,11 +47,11 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/pixmaps
+install -d $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-install icon.xpm $RPM_BUILD_ROOT%{_datadir}/pixmaps/gtkzip.xpm
+install icon.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/gtkzip.xpm
 
 %clean
 rm -rf $RPM_BUILD_ROOT
