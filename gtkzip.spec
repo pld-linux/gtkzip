@@ -39,7 +39,7 @@ ca³o¶ci w C, z wykorzystaniem biblioteki GTK.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
