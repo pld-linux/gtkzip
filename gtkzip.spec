@@ -16,7 +16,7 @@ BuildRequires:	glib-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
 BuildRequires:	libgtop-devel >= 1.0.0
 BuildRequires:	gdbm-devel
-BuildRoot: 	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix	/usr/X11R6
 
