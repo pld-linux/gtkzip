@@ -1,0 +1,11 @@
+--- configure.in~	Fri May  7 23:49:45 1999
++++ configure.in	Sat Jul 17 19:50:11 1999
+@@ -81,8 +81,6 @@
+   AC_MSG_WARN($LIBGTOP_NOT_FOUND)
+ fi
+ 
+-prefix=/usr/local
+-
+ GTKZIP_BIN=${prefix}/bin
+ AC_SUBST(GTKZIP_BIN)
+ 
