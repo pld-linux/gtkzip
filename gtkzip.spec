@@ -7,6 +7,7 @@ Copyright: 	GPL
 Group: 		X11/Utilities
 Group(pl):	X11/Narzêdzia
 Source: 	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
+Icon:		gtkzip.xpm
 Patch:		gtkzip-config.patch
 URL: 		http://home.netvigator.com/~sallymak/gtkzip/
 BuildPrereq:	XFree86-devel
@@ -44,6 +45,8 @@ rm -rf $RPM_BUILD_ROOT
 
 make install-strip DESTDIR=$RPM_BUILD_ROOT
 
+install icon.xpm $RPM_BUILD_ROOT%{_datadir}/pixmaps/gtkzip.xpm
+
 gzip -9nf AUTHORS COPYING ChangeLog NEWS README
 
 %clean
@@ -52,4 +55,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc {AUTHORS,ChangeLog,NEWS,README}.gz
-%{_bindir}/gtkzip
+%attr(755,root,root) %{_bindir}/gtkzip
+%{_datadir}/pixmaps/gtkzip.xpm
