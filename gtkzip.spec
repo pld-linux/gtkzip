@@ -5,11 +5,12 @@ Version:	0.5.1
 Release:	5
 License:	GPL
 Group:		X11/Applications
-Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
+Source0:	http://smallpig.net/gtkzip/gtkzip-0.5.1.src.tar.gz
+# Source0-md5:	54b8f902e3bdc94f52f557b2085cff6e
 Icon:		gtkzip.xpm
 Patch0:		%{name}-config.patch
 Patch1:		%{name}-ac_am.patch
-URL:		http://home.netvigator.com/~sallymak/gtkzip/
+URL:		http://smallpig.net/gtkzip/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gtk+-devel >= 1.0.6
