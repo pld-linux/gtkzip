@@ -11,6 +11,7 @@ Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.
 Icon:		gtkzip.xpm
 Patch0:		%{name}-config.patch
 URL:		http://home.netvigator.com/~sallymak/gtkzip/
+BuildRequires:	autoconf
 BuildRequires:	gtk+-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
 BuildRequires:	libgtop-devel >= 1.0.0
