@@ -19,7 +19,6 @@ BuildRequires:	libtool
 BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix	/usr/X11R6
 
 %description
 GtkZip is a program for maintaining your Iomega Zip drive disks under
