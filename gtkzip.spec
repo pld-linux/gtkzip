@@ -33,7 +33,7 @@ ca³o¶ci w C, z wykorzystaniem biblioteki GTK.
 %patch -p0
 
 %build
-autoconf
+%{__autoconf}
 %configure
 
 %{__make}
