@@ -36,7 +36,7 @@ ca³o¶ci w C, z wykorzystaniem biblioteki GTK.
 autoconf
 %configure
 
-make
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
