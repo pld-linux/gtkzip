@@ -2,13 +2,14 @@ Summary:	Program for maintaining your Zip drive disks
 Summary(pl):	Program zarz±dzaj±cy napêdami Zip
 Name:		gtkzip
 Version:	0.5.1
-Release:	2
+Release:	3
 License:	GPL
-Group:		X11/Utilities
-Group(pl):	X11/Narzêdzia
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
 Icon:		gtkzip.xpm
-Patch0:		gtkzip-config.patch
+Patch0:		%{name}-config.patch
 URL:		http://home.netvigator.com/~sallymak/gtkzip/
 BuildRequires:	gtk+-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
@@ -41,11 +42,11 @@ autoconf
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install-strip DESTDIR=$RPM_BUILD_ROOT
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install icon.xpm $RPM_BUILD_ROOT%{_datadir}/pixmaps/gtkzip.xpm
 
-gzip -9nf AUTHORS COPYING ChangeLog NEWS README
+gzip -9nf AUTHORS ChangeLog NEWS README
 
 %clean
 rm -rf $RPM_BUILD_ROOT
