@@ -1,0 +1,57 @@
+diff -uNr gtkzip-0.5.1/configure.in gtkzip-0.5.1.new/configure.in
+--- gtkzip-0.5.1/configure.in	Sun Aug 11 22:18:36 2002
++++ gtkzip-0.5.1.new/configure.in	Sun Aug 11 22:16:37 2002
+@@ -20,7 +20,8 @@
+ AC_PROG_GCC_TRADITIONAL
+ AC_PROG_INSTALL
+ AC_PROG_LN_S
+-AC_PROG_LEX
++AM_PROG_LEX
++AC_PROG_LIBTOOL
+ 
+ dnl Checks for libraries.
+ 
+diff -uNr gtkzip-0.5.1/src/Makefile.am gtkzip-0.5.1.new/src/Makefile.am
+--- gtkzip-0.5.1/src/Makefile.am	Fri May  7 23:49:45 1999
++++ gtkzip-0.5.1.new/src/Makefile.am	Sun Aug 11 22:17:20 2002
+@@ -1,11 +1,7 @@
+ bindir=$(GTKZIP_BIN)
+ bin_PROGRAMS = gtkzip
+ 
+-if HAVE_LIBGTOP
+ DISKUSAGE = diskusage.c
+-else
+-DISKUSAGE = 
+-endif
+ 
+ INCLUDES = $(GTKZIP_INCLUDES) 
+ 
+diff -uNr gtkzip-0.5.1.orig/configure.in gtkzip-0.5.1/configure.in
+--- gtkzip-0.5.1.orig/configure.in	Sun Aug 11 22:28:58 2002
++++ gtkzip-0.5.1/configure.in	Sun Aug 11 23:07:08 2002
+@@ -77,16 +77,19 @@
+    AC_MSG_ERROR($PTHREADS_NOT_FOUND)
+ fi
+ 
+-GNOME_LIBGTOP_HOOK(,have_libgtop=yes)
+-if test x$have_libgtop != xyes; then
+-  AC_MSG_WARN($LIBGTOP_NOT_FOUND)
+-fi
++AC_PATH_PROG(LIBGTOP_CONFIG, libgtop-config, no)
++
++LIBGTOP_CFLAGS=`$LIBGTOP_CONFIG --cflags`
++LIBGTOP_LIBS=`$LIBGTOP_CONFIG --libs`
++
++AC_SUBST(LIBGTOP_CFLAGS)
++AC_SUBST(LIBGTOP_LIBS)
+ 
+ GTKZIP_BIN=${prefix}/bin
+ AC_SUBST(GTKZIP_BIN)
+ 
+-GTKZIP_INCLUDES="$GTK_CFLAGS $IMLIB_CFLAGS"
+-GTKZIP_LDADD="$GTK_LIBS $IMLIB_LIBS"
++GTKZIP_INCLUDES="$GTK_CFLAGS $IMLIB_CFLAGS $LIBGTOP_CFLAGS"
++GTKZIP_LDADD="$GTK_LIBS $IMLIB_LIBS $LIBGTOP_LIBS"
+ 
+ AC_SUBST(GTKZIP_LDADD)
+ AC_SUBST(GTKZIP_INCLUDES)

@@ -2,17 +2,20 @@ Summary:	Program for maintaining your Zip drive disks
 Summary(pl):	Program zarz±dzaj±cy napêdami Zip
 Name:		gtkzip
 Version:	0.5.1
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Applications
 Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
 Icon:		gtkzip.xpm
 Patch0:		%{name}-config.patch
+Patch1:         %{name}-ac_am.patch
 URL:		http://home.netvigator.com/~sallymak/gtkzip/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	gtk+-devel >= 1.0.6
 BuildRequires:	imlib-devel >= 1.8.1
 BuildRequires:	libgtop-devel >= 1.0.0
+BuildRequires:	libtool
 BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,10 +33,15 @@ ca³o¶ci w C, z wykorzystaniem biblioteki GTK.
 
 %prep
 %setup -q
-%patch -p0
+%patch0 -p0
+%patch1 -p1
 
 %build
+rm -f missing
+%{__libtoolize}
+aclocal
 %{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
@@ -46,13 +54,11 @@ install -d $RPM_BUILD_ROOT%{_datadir}/pixmaps
 
 install icon.xpm $RPM_BUILD_ROOT%{_datadir}/pixmaps/gtkzip.xpm
 
-gzip -9nf AUTHORS ChangeLog NEWS README
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc {AUTHORS,ChangeLog,NEWS,README}.gz
+%doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gtkzip
 %{_pixmapsdir}/gtkzip.xpm
