@@ -8,7 +8,7 @@ Group:		X11/Applications
 Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
 Icon:		gtkzip.xpm
 Patch0:		%{name}-config.patch
-Patch1:         %{name}-ac_am.patch
+Patch1:		%{name}-ac_am.patch
 URL:		http://home.netvigator.com/~sallymak/gtkzip/
 BuildRequires:	autoconf
 BuildRequires:	automake
