@@ -23,12 +23,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GtkZip is a program for maintaining your Iomega Zip drive disks under
 Linux. This program is based on a command line program ziptool, and is
-written fully in C using the GTK widget set.
+written fully in C using the GTK+ widget set.
 
 %description -l pl
 GtkZip jest programem do zarz±dzania napêdami Iomega Zip pod Linuxem.
 Program ten jest oparty na programie ziptool, zosta³ napisany w
-ca³o¶ci w C, z wykorzystaniem biblioteki GTK.
+ca³o¶ci w C, z wykorzystaniem biblioteki GTK+.
 
 %prep
 %setup -q
