@@ -1,37 +1,55 @@
-%define ver      0.5.1
-%define prefix   /usr
+Summary: 	Program for maintaining your Zip drive disks
+Summary(pl):	Program zarz±dzaj±cy napêdami Zip
+Name: 		gtkzip
+Version: 	0.5.1
+Release: 	2
+Copyright: 	GPL
+Group: 		X11/Utilities
+Group(pl):	X11/Narzêdzia
+Source: 	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
+Patch:		gtkzip-config.patch
+URL: 		http://home.netvigator.com/~sallymak/gtkzip/
+BuildPrereq:	XFree86-devel
+BuildPrereq:	gtk+-devel >= 1.0.6
+BuildPrereq:	glib-devel >= 1.0.6
+BuildPrereq:	imlib-devel >= 1.8.1
+BuildPrereq:	libgtop-devel >= 1.0.0
+BuildPrereq:	gdbm-devel
+BuildRoot: 	/tmp/%{name}-%{version}-root
 
-Summary: program for maintaining your Zip drive disks
-Name: gtkzip
-Version: 0.5.1
-Release: 1
-Copyright: GPL
-Packager: KaYue Mak <gtkzip@yahoo.com>
-Vendor: KaYue Mak <gtkzip@yahoo.com>
-Group: X11/Applications/
-Source: http://home.netvigator.com/~sallymak/gtkzip/gtkzip-%{ver}.src.tar.gz 
-BuildRoot: /tmp/%{name}-%{version}-root
-URL: http://home.netvigator.com/~sallymak/gtkzip/
+%define		_prefix	/usr/X11R6
 
 %description
-GtkZip is a program for maintaining your 
-Iomega Zip drive disks under Linux.  
-This program is based on a command 
-line program ziptool, and is written 
-fully in c using the GTK widget set.
+GtkZip is a program for maintaining your Iomega Zip drive disks under Linux.  
+This program is based on a command line program ziptool, and is written 
+fully in C using the GTK widget set.
+
+%description -l pl
+GtkZip jest programem do zarz±dzania napêdami Iomega Zip pod Linuxem.
+Program ten jest oparty na programie ziptool, zosta³ napisany w ca³o¶ci 
+w C, z wykorzystaniem biblioteki GTK.
 
 %prep
-%setup
+%setup -q
+%patch -p0
 
 %build
-./configure
+autoconf
+%configure
+
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/usr/bin
-cp ./src/gtkzip $RPM_BUILD_ROOT/usr/bin/gtkzip
+
+make install-strip DESTDIR=$RPM_BUILD_ROOT
+
+gzip -9nf AUTHORS COPYING ChangeLog NEWS README
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
-%doc AUTHORS COPYING ChangeLog NEWS README
-/usr/bin/gtkzip
+%defattr(644,root,root,755)
+%doc {AUTHORS,ChangeLog,NEWS,README}.gz
+%{_bindir}/gtkzip
