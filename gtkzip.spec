@@ -2,7 +2,7 @@ Summary:	Program for maintaining your Zip drive disks
 Summary(pl):	Program zarz±dzaj±cy napêdami Zip
 Name:		gtkzip
 Version:	0.5.1
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	http://home.netvigator.com/~sallymak/gtkzip/%{name}-%{version}.src.tar.gz
