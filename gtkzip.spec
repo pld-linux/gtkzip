@@ -1,5 +1,5 @@
 Summary:	Program for maintaining your Zip drive disks
-Summary(pl):	Program zarz±dzaj±cy napêdami Zip
+Summary(pl.UTF-8):   Program zarzÄ…dzajÄ…cy napÄ™dami Zip
 Name:		gtkzip
 Version:	0.5.1
 Release:	5
@@ -25,10 +25,10 @@ GtkZip is a program for maintaining your Iomega Zip drive disks under
 Linux. This program is based on a command line program ziptool, and is
 written fully in C using the GTK+ widget set.
 
-%description -l pl
-GtkZip jest programem do zarz±dzania napêdami Iomega Zip pod Linuksem.
-Program ten jest oparty na programie ziptool, zosta³ napisany w
-ca³o¶ci w C, z wykorzystaniem biblioteki GTK+.
+%description -l pl.UTF-8
+GtkZip jest programem do zarzÄ…dzania napÄ™dami Iomega Zip pod Linuksem.
+Program ten jest oparty na programie ziptool, zostaÅ‚ napisany w
+caÅ‚oÅ›ci w C, z wykorzystaniem biblioteki GTK+.
 
 %prep
 %setup -q
