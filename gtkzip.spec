@@ -1,5 +1,5 @@
 Summary:	Program for maintaining your Zip drive disks
-Summary(pl.UTF-8):   Program zarządzający napędami Zip
+Summary(pl.UTF-8):	Program zarządzający napędami Zip
 Name:		gtkzip
 Version:	0.5.1
 Release:	5
